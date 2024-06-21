@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://dfp1uet8pfoqr"]
+
+[ext_resource type="Script" path="res://res/scripts/PlayerControls.gd" id="2_rf8uf"]
+[ext_resource type="Texture2D" uid="uid://cowk8jc4gwib0" path="res://res/characters/PlyMouthWalk.png" id="3_376e0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5holl"]
+atlas = ExtResource("3_376e0")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f10pt"]
+atlas = ExtResource("3_376e0")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whsqf"]
+atlas = ExtResource("3_376e0")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwjom"]
+atlas = ExtResource("3_376e0")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8ply"]
+atlas = ExtResource("3_376e0")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_215np"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5holl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f10pt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whsqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwjom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8ply")
+}],
+"loop": true,
+"name": &"move",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iub7v"]
+size = Vector2(10, 29)
+
+[node name="Plymouth" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("2_rf8uf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -16)
+sprite_frames = SubResource("SpriteFrames_215np")
+autoplay = "move"
+frame_progress = 0.676698
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -14.5)
+shape = SubResource("RectangleShape2D_iub7v")
